@@ -1,0 +1,68 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 64px auto;
+  width: 100%;
+  max-width: 800px;
+  background-color: #242424;
+
+}
+
+h1{
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+} 
+
+.carousel{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.images-container{
+  margin: 0 auto;
+  overflow: hidden;
+  width: 400px;
+  justify-content: center;
+}
+
+.carousel-top{
+  position: relative;
+}
+
+.right-arrow {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  right: 40px;
+}
+
+.left-arrow {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  left: 40px;
+}
+
+.images{
+  white-space: nowrap;
+}
+
+.image{
+  pointer-events: none;
+}
+
+.dots{
+  margin: 8px;
+  cursor: pointer;
+}
