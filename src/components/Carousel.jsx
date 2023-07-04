@@ -26,6 +26,7 @@ const Carousel = ({ slides }) => {
       <div className="images-container">
         <motion.div 
           animate={{ x: - current * 100 + '%' }} 
+          transition={{ ease: "easeOut", duration: 0.5 }}
           className="images">
           {slides.map((slide, index) => {
             return (
