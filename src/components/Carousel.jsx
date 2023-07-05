@@ -21,12 +21,40 @@ const Carousel = ({ slides }) => {
     setCurrent(newIndex);
   };
 
+  const handlePrevious = () => {
+    setCurrent((newIndex) => (newIndex === 0 ? slides.length - 1 : newIndex - 1));
+  };
+
+  const handleNext = () => {
+    setCurrent((newIndex) => (newIndex === slides.length - 1 ? 0 : newIndex + 1));
+  };
+
   return (
     <div className="carousel">
       <div className="images-container">
         <motion.div 
-          animate={{ x: - current * 100 + '%' }} 
+          animate={{ x: - (100 / slides.length) * current + '%' }}
           transition={{ ease: "easeOut", duration: 0.5 }}
+
+          // draggable carousel
+
+          drag="x"
+          whileTap={{ cursor: "grabbing" }}
+          dragElastic={0.5}
+
+          onDragEnd={(event, info) => {
+          if (info.offset.x > 0) {
+            handlePrevious();
+          } 
+          if (info.offset.x < 0) {
+            handleNext();
+          }
+          }}
+
+          style={{
+            width: `${slides.length * 100}%`,
+          }}
+
           className="images">
           {slides.map((slide, index) => {
             return (
@@ -38,12 +66,12 @@ const Carousel = ({ slides }) => {
 
       <FaChevronLeft
         className="left-arrow"
-        onClick={() => { updateCurrent(current - 1) }}
+        onClick={() => { handlePrevious() }}
       />
 
       <FaChevronRight
         className="right-arrow"
-        onClick={() => { updateCurrent(current + 1) }}
+        onClick={() => { handleNext() }}
       />
 
       <div className="dots">
